@@ -1,0 +1,22 @@
+  <nav class="flex-column flex-grow-1 w-100 ps-0">
+    <div class="nav">
+      <!-- home -->
+      <div class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
+        <a href="{{ '/' | relative_url }}" class="nav-link">
+          <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+        </a>
+      </div>
+      <!-- the real tabs -->
+      {% for tab in site.tabs %}
+      {% if tab.navigable %}
+        <div class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+          <a href="{{ tab.url | relative_url }}" class="nav-link">
+            {% capture tab_name %}{{ tab.url | split: '/' }}{% endcapture %}
+            <span>{{ site.data.locales[include.lang].tabs.[tab_name] | default: tab.title | upcase }}</span>
+          </a>
+        </div>
+        {% endif %}
+        <!-- .nav-item -->
+      {% endfor %}
+    </div>
+  </nav>

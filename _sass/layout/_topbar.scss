@@ -14,13 +14,95 @@
   }
 }
 
+
 #topbar {
+  @extend %btn-color;
+
+  @include bp.lte(bp.get(md)) {
+    @include mx.max-w-100;
+  }
+
+  @include bp.lt(bp.get(lg)) {
+    max-width: 100%;
+  }
+
+
+  div.nav {
+      margin-bottom: 0rem;
+      
+      div.nav-item {
+        opacity: 0.9;
+        width: auto;
+
+        @include mx.pl-pr(0.0rem);
+
+        @include bp.xxxl {
+          @include mx.pl-pr(0rem);
+        }
+
+        a.nav-link {
+          @include mx.pt-pb(0.6rem);
+
+          color: var(--sidebar-link-color);
+          display: flex;
+          align-items: center;
+          border-radius: 0rem;
+          font-weight: 600;
+          font-size: 1.3rem;
+
+          &:hover {
+            background-color: var(--sidebar-hover-bg);
+          }
+
+          i {
+            font-size: 95%;
+            opacity: 0.8;
+            margin-right: 1.5rem;
+          }
+
+          span {
+            font-size: 90%;
+            letter-spacing: 0.2px;
+          }
+        }
+
+        &.active {
+          .nav-link {
+            color: var(--sidebar-active-color);
+            background-color: var(--sidebar-hover-bg);
+
+            span {
+              opacity: 1;
+            }
+          }
+        }
+
+        &:not(:first-child) {
+          margin-top: 0rem;
+        }
+      }
+  }
+}
+
+
+#topbar-breadcrumb-wrapper {
+  height: v.$topbar-breadcrumb-height;
+  background-color: var(--topbar-bg);
+
+  @include bp.lt(bp.get(lg)) {
+    @include mx.slide(top 0.2s ease);
+
+    left: 0;
+  }
+}
+
+#topbar-breadcrumb {
   @extend %btn-color;
 
   #breadcrumb {
     font-size: 1rem;
     color: var(--text-muted-color);
-    padding-left: 0.5rem;
+    padding-left: 0.0rem;
 
     a:hover {
       @extend %link-hover;
