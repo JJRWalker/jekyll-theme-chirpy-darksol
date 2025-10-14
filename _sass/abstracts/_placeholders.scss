@@ -34,8 +34,9 @@
   @extend %link-color;
 
   background: var(--tag-hover);
-  border-color: var(--tag-hover);
+  border: var(--link-color);
   transition: background 0.35s ease-in-out;
+  transition: border 0.35s ease-in-out;
 }
 
 %table-cell {

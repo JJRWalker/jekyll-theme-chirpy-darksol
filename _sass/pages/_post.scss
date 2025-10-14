@@ -140,7 +140,7 @@ header {
 
 .post-tags {
   line-height: 2rem;
-
+  border: var(--link-color);
   .post-tag {
     &:hover {
       @extend %tag-hover;
