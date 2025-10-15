@@ -33,9 +33,10 @@
     </nav>
     <!-- endof #breadcrumb -->
 
-    <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar">
-      <i class="fas fa-bars fa-fw"></i>
-    </button>
+    {% comment %}
+    not sure why but we need this sidebar button for the search to work
+    {% endcomment %}
+    <button type="button" id="sidebar-trigger" class="btn btn-link" aria-label="Sidebar"></button>
 
     <div id="topbar-title">
       {% if page.layout == 'home' %}
