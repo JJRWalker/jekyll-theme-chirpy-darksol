@@ -15,6 +15,8 @@ tabs:
   tags: Tags
   archives: Archives
   about: About
+  blog: Blog
+  subblog: "Sub Blog"
 
 # the text displayed in the search bar & search results
 search:
