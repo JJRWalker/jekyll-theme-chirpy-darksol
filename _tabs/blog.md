@@ -5,3 +5,5 @@ navigable: true
 order: 1
 redirect: /blog/
 ---
+
+# Blog
