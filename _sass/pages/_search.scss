@@ -36,11 +36,6 @@ search {
 }
 
 #search-result-wrapper {
-  display: none;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-
   .content {
     margin-top: 2rem;
   }
@@ -57,75 +52,200 @@ search {
     max-width: v.$main-content-max-width;
     justify-content: start !important;
   }
+
+  #search-results {
+    margin-top: 2rem;
+
+    @include bp.lg {
+      margin-top: 2.5rem;
+    }
+
+    .card-wrapper {
+      &:hover {
+        text-decoration: none;
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 1.25rem;
+      }
+    }
+
+    .card {
+      border: 0;
+      background: none;
+
+      %img-radius {
+        border-radius: v.$radius-lg v.$radius-lg 0 0;
+
+        @include bp.md {
+          border-radius: 0 v.$radius-lg v.$radius-lg 0;
+        }
+      }
+
+      .preview-img {
+        @extend %img-radius;
+
+        img {
+          @extend %img-radius;
+        }
+      }
+
+      .card-body {
+        height: 100%;
+        padding: 1rem;
+
+        @include bp.md {
+          padding: 1.75rem 1.75rem 1.25rem;
+        }
+
+        .card-title {
+          @extend %text-clip;
+
+          color: var(--heading-color) !important;
+          font-size: 1.25rem;
+        }
+
+        %muted {
+          color: var(--text-muted-color) !important;
+        }
+
+        .card-text {
+          @include bp.md {
+            display: inherit !important;
+          }
+
+          &.content {
+            @extend %muted;
+
+            p {
+              @extend %text-clip;
+
+              line-height: 1.5;
+              margin: 0;
+            }
+          }
+        }
+
+        .post-meta {
+          @extend %muted;
+
+          i {
+            &:not(:first-child) {
+              margin-left: 1.5rem;
+
+              @include bp.md {
+                margin-left: 1.75rem;
+              }
+            }
+          }
+
+          em {
+            @extend %normal-font-style;
+
+            color: inherit;
+          }
+
+          > div:first-child {
+            display: block;
+
+            @extend %text-ellipsis;
+          }
+        }
+      }
+    }
+    /*
+    padding-bottom: 3rem;
+    @include bp.between(bp.get(lg), calc(#{bp.get(xl)} - 1px)) {
+      > div {
+        max-width: 700px;
+      }
+    }
+
+    a {
+      font-size: 1.4rem;
+      line-height: 1.5rem;
+
+      &:hover {
+        @extend %link-hover;
+      }
+
+      @extend %link-color;
+      @extend %no-bottom-border;
+      @extend %heading;
+    }
+
+    > article {
+
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+
+      @include bp.xl {
+        width: 45%;
+
+        &:nth-child(odd) {
+          margin-right: 1.5rem;
+        }
+
+        &:nth-child(even) {
+          margin-left: 1.5rem;
+        }
+
+        &:last-child:nth-child(odd) {
+          position: relative;
+          right: 24.3%;
+        }
+      }
+
+      h2 {
+        line-height: 2.5rem;
+      }
+
+      //icons 
+      i {
+        color: #818182;
+        margin-right: 0.15rem;
+        font-size: 80%;
+      }
+
+      > p {
+        @extend %text-ellipsis;
+
+        white-space: break-spaces;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+    }
+    */
+  }
+
+  .access {
+    top: 2rem;
+    transition: top 0.2s ease-in-out;
+    margin-top: 3rem;
+    position: -webkit-sticky;
+    position: sticky;
+
+    > section {
+      @extend %panel-border;
+
+      padding-left: 1rem;
+
+      &:not(:first-child) {
+        margin-top: 4rem;
+      }
+    }
+
+    .content {
+      font-size: 0.9rem;
+    }
+  }
 }
 
-#search-results {
-  padding-bottom: 3rem;
 
-  @include bp.between(bp.get(lg), calc(#{bp.get(xl)} - 1px)) {
-    > div {
-      max-width: 700px;
-    }
-  }
-
-  a {
-    font-size: 1.4rem;
-    line-height: 1.5rem;
-
-    &:hover {
-      @extend %link-hover;
-    }
-
-    @extend %link-color;
-    @extend %no-bottom-border;
-    @extend %heading;
-  }
-
-  > article {
-    width: 100%;
-
-    &:not(:last-child) {
-      margin-bottom: 1rem;
-    }
-
-    @include bp.xl {
-      width: 45%;
-
-      &:nth-child(odd) {
-        margin-right: 1.5rem;
-      }
-
-      &:nth-child(even) {
-        margin-left: 1.5rem;
-      }
-
-      &:last-child:nth-child(odd) {
-        position: relative;
-        right: 24.3%;
-      }
-    }
-
-    h2 {
-      line-height: 2.5rem;
-    }
-
-    /* icons */
-    i {
-      color: #818182;
-      margin-right: 0.15rem;
-      font-size: 80%;
-    }
-
-    > p {
-      @extend %text-ellipsis;
-
-      white-space: break-spaces;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-    }
-  }
-}
 
 /* 'Cancel' link */
 #search-cancel {

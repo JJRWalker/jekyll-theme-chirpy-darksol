@@ -1,10 +1,25 @@
 <!-- The Search results -->
 
-<div id="search-result-wrapper" class="d-flex justify-content-center d-none">
-  <div class="col-11 content">
-    <div id="search-hints">
-      {% include_cached trending-tags.html lang=include.lang %}
-    </div>
-    <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+<div id="search-result-wrapper" class="d-none">
+  <div class="row flex-grow-1">
+    <main aria-label="Search Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+      <div id="search-hints">
+        {% include_cached trending-tags.html lang=include.lang %}
+      </div>    
+      <div id="search-results" class="flex-grow-1 px-xl-1"></div>
+    </main>
+
+    <!-- panel -->
+    <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+      <div class="access">
+        {% include_cached update-list.html lang=lang %}
+        {% include_cached trending-tags.html lang=lang %}
+      </div>
+
+      {% for _include in layout.panel_includes %}
+        {% assign _include_path = _include | append: '.html' %}
+        {% include {{ _include_path }} lang=lang %}
+      {% endfor %}
+    </aside>
   </div>
 </div>
