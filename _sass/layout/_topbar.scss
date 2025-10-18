@@ -5,13 +5,21 @@
 
 #topbar-wrapper {
   height: v.$topbar-height;
-  background-color: var(--topbar-bg);
+  //background-color: var(--topbar-bg);
 
   @include bp.lt(bp.get(lg)) {
     @include mx.slide(top 0.2s ease);
 
     left: 0;
   }
+}
+
+#topbar-bg{
+  background-color: var(--topbar-bg);
+    height: v.$topbar-height;
+    position: absolute;
+    z-index: -99;
+    width: 100%;
 }
 
 
@@ -29,18 +37,19 @@
 
   div.nav {
       margin-bottom: 0rem;
-      
       div.nav-item {
         opacity: 0.9;
         width: auto;
-
         @include mx.pl-pr(0.0rem);
-
+        
         @include bp.xxxl {
           @include mx.pl-pr(0rem);
         }
-
+        
         a.nav-link {
+          
+          height: v.$topbar-height;
+          align-self: auto;
           @include mx.pt-pb(0.6rem);
 
           color: var(--sidebar-link-color);
@@ -76,10 +85,6 @@
             }
           }
         }
-
-        &:not(:first-child) {
-          margin-top: 0rem;
-        }
       }
   }
 }
@@ -87,7 +92,7 @@
 
 #topbar-breadcrumb-wrapper {
   height: v.$topbar-breadcrumb-height;
-  background-color: var(--topbar-bg);
+  //background-color: var(--topbar-bg);
 
   @include bp.lt(bp.get(lg)) {
     @include mx.slide(top 0.2s ease);
@@ -103,6 +108,7 @@
     font-size: 1rem;
     color: var(--text-muted-color);
     padding-left: 0.0rem;
+    padding-top: 1rem;
 
     a:hover {
       @extend %link-hover;
