@@ -10,6 +10,7 @@ search {
   background: var(--main-bg);
   padding: 0 0.5rem;
 
+
   i {
     z-index: 2;
     font-size: 0.9rem;
@@ -263,7 +264,6 @@ search {
   padding: 0.18rem 0.3rem;
   color: var(--text-color);
   height: auto;
-
   &:focus {
     box-shadow: none;
   }

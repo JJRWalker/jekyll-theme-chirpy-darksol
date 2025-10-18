@@ -7,6 +7,7 @@ const btnSearchTrigger = document.getElementById('search-trigger');
 const btnCancel = document.getElementById('search-cancel');
 const content = document.querySelectorAll('#main-wrapper>.container>.row');
 const topbarTitle = document.getElementById('topbar-title');
+const topbarContent = document.getElementById('topbar-nav');
 const search = document.getElementById('search');
 const resultWrapper = document.getElementById('search-result-wrapper');
 const results = document.getElementById('search-results');
@@ -25,12 +26,14 @@ class MobileSearchBar {
     btnSbTrigger.classList.add(UNLOADED);
     topbarTitle.classList.add(UNLOADED);
     btnSearchTrigger.classList.add(UNLOADED);
+    topbarContent.classList.add(UNLOADED);
     search.classList.add(FLEX);
     btnCancel.classList.add(LOADED);
   }
 
   static off() {
     btnCancel.classList.remove(LOADED);
+    topbarContent.classList.remove(UNLOADED);
     search.classList.remove(FLEX);
     btnSbTrigger.classList.remove(UNLOADED);
     topbarTitle.classList.remove(UNLOADED);

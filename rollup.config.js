@@ -6,6 +6,8 @@ import pkg from './package.json';
 
 const SRC_DEFAULT = '_javascript';
 const SRC_PWA = `${SRC_DEFAULT}/pwa`;
+const SRC_COMP = `${SRC_DEFAULT}/modules/components`;
+const SRC_LAYOUT = `${SRC_DEFAULT}/modules/layouts`;
 const DIST = 'assets/js/dist';
 
 const banner = `/*!
@@ -80,6 +82,7 @@ export default [
   build('page'),
   build('post'),
   build('misc'),
+  build('blog'),
   build('theme', { outputName: 'Theme' }),
   build('app', { src: SRC_PWA, jekyll: true }),
   build('sw', { src: SRC_PWA, jekyll: true })
