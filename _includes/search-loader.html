@@ -67,19 +67,38 @@
       searchResultTemplate: '{{ result_elem | strip_newlines }}',
       noResultsText: '{{ not_found }}',
       templateMiddleware: function(prop, value, template) {
-        /*if (prop === 'categories') {
+        if (prop === 'categories') {
           if (value === '') {
-            return `${value}`;
+            return ``;
           } else {
-            return `<div class="me-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`;
+            return `${value}`;
           }
-        }*/
+        }
 
         if (prop === 'tags') {
           if (value === '') {
             return `${value}`;
           } else {
             return `<i class="fa fa-tag fa-fw"></i>${value}`;
+          }
+        }
+
+        if (prop === 'date')
+        {
+          if (value === ''){
+            return ``;
+          }
+          else {
+            return `${value}`;
+          }
+        }
+
+        if (prop === 'content'){
+          if (value === ''){
+            return ``;
+          }
+          else{
+            return `${value}`;
           }
         }
       }

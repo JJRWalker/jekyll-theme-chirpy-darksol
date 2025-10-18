@@ -13,17 +13,30 @@ swcache: true
     "date": {{ post.date | date: '%b %d, %Y' | jsonify}},
     "content": {% include post-description.html json=true %}
   }{% unless forloop.last %},{% endunless %}
-  {% endfor %}
-    ,
+  {% endfor %},
+
   {% for page in site.pages %}
    {
-     {% if page.title != nil %}
-        "title"    : "{{ page.title | escape }}",
-        "category" : "{{ page.category }}",
-        "tags"     : "{{ page.tags | join: ', ' }}",
-        "url"      : "{{ site.baseurl }}{{ page.url }}",
-        "date"     : "{{ page.date }}",
-        "content"  : "{{ page.content | strip_html | strip_newlines }}"
+     {% if page.title != nil and page.searchable %}
+     {% assign post = page %}
+        "title"    : {{ page.title | jsonify }},
+        "category" : {{ page.categories | join: ', ' | jsonify }},
+        "tags"     : {{ page.tags | join: ', ' | jsonify }},
+        "date"     : {{ page.date | date: '%b %d, %Y' | jsonify}},
+        "content"  : {% include post-description.html json=true %}
+     {% endif %}
+   } {% unless forloop.last %},{% endunless %}
+  {% endfor %},
+  
+  {% for page in site.tabs %}
+   {
+     {% if page.title != nil and page.searchable %}
+     {% assign post = page %}
+        "title"    : {{ page.title | jsonify }},
+        "category" : {{ page.categories | join: ', ' | jsonify }},
+        "tags"     : {{ page.tags | join: ', ' | jsonify }},
+        "date"     : {{ page.date | date: '%b %d, %Y' | jsonify}},
+        "content"  : {% include post-description.html json=true %}
      {% endif %}
    } {% unless forloop.last %},{% endunless %}
   {% endfor %}
