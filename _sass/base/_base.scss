@@ -91,7 +91,7 @@ main {
 
 .post-preview {
   @extend %rounded;
-
+  height: 100%;
   border: 0;
   background: var(--card-bg);
   box-shadow: var(--card-shadow);
@@ -473,4 +473,8 @@ mjx-container {
   > :not(script) {
     margin-top: 3rem;
   }
+}
+
+.no-background{
+    background: none;
 }

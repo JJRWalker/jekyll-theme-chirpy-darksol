@@ -1,0 +1,89 @@
+<article class="card-wrapper-home card" style="{% if include.height %}{{"height: " | append: include.height}}{% endif %}">
+    {% assign target_page = site.pages | where:"url",include.page_url | first %}
+    {% if target_page == nill %}
+        {% assign target_page = site.posts | where:"url",include.page_url | first %}
+    {% endif %}
+    {% if target_page == nill %}
+        {% assign target_page = site.tabs | where:"url",include.page_url | first %}
+    {% endif %}
+
+    <a href="{{ target_page.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse {% if include.preview_mode == "fill" and (target_page.image or target_page.video) %}no-background{% endif %}">
+    {% assign card_body_col = '12' %}
+
+    {% if target_page.image %}
+        {% assign src = target_page.image.path | default: target_page.image %}
+        {% unless src contains '//' %}
+        {% assign src = target_page.media_subpath | append: '/' | append: src | replace: '//', '/' %}
+        {% endunless %}
+
+        {% assign alt = target_page.image.alt | xml_escape | default: 'Preview Image' %}
+
+        {% assign lqip = null %}
+
+        {% if target_page.image.lqip %}
+        {% capture lqip %}lqip="{{ target_page.image.lqip }}"{% endcapture %}
+        {% endif %}
+
+        {% if include.preview_mode =="fill" %}
+            {% assign div_class = "card-background" %}
+        {% else %}
+            {% assign div_class = "col-md-5" %}
+        {% endif %}
+
+        <div class="{{div_class}}">
+        <img src="{{ src }}" alt="{{ alt }}" {{ lqip }}">
+        </div>
+
+        {% assign card_body_col = '7' %}
+    {% endif %}
+
+
+    {% if include.preview_mode =="fill" %}
+        {% assign div_class = "card-background-filled" %}
+    {% else %}
+        {% assign div_class = "col-md-" | append: {{card_body_col}} %}
+{% endif %}
+    <div class="{{div_class}}">
+        <div class="card-background-overlay"></div>
+        <div class="card-body">
+        <h1 class="card-title my-2 mt-md-0">{{ target_page.title }}</h1>
+
+        <div class="card-text content mt-0 mb-3">
+            {% if include.show_description %}
+                {% assign post = target_page %}
+                <p>{% include post-description.html %}</p>
+            {% endif %}
+        </div>
+
+        <div class="post-meta flex-grow-1 d-flex align-items-end">
+            <div class="me-auto">
+            <!-- posted date -->
+            {% if include.show_date %}
+                <i class="far fa-calendar fa-fw me-1"></i>
+                {% include datetime.html date=target_page.date lang=lang %}
+            {% endif %}
+            <!-- categories -->
+            {% if target_page.categories.size > 0 and include.show_categories %}
+                <i class="far fa-folder-open fa-fw me-1"></i>
+                <span class="categories">
+                {% for category in target_page.categories %}
+                    {{ category }}
+                    {%- unless forloop.last -%},{%- endunless -%}
+                {% endfor %}
+                </span>
+            {% endif %}
+            </div>
+
+            {% if target_page.pin and include.show_pin %}
+            <div class="pin ms-1">
+                <i class="fas fa-thumbtack fa-fw"></i>
+                <span>{{ site.data.locales[lang].target_page.pin_prompt }}</span>
+            </div>
+            {% endif %}
+        </div>
+        <!-- .post-meta -->
+        </div>
+        <!-- .card-body -->
+    </div>
+    </a>
+</article>
