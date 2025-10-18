@@ -20,6 +20,7 @@ swcache: true
      {% if page.title != nil and page.searchable %}
      {% assign post = page %}
         "title"    : {{ page.title | jsonify }},
+        "url"      : {{ page.url | relative_url | jsonify }},
         "category" : {{ page.categories | join: ', ' | jsonify }},
         "tags"     : {{ page.tags | join: ', ' | jsonify }},
         "date"     : {{ page.date | date: '%b %d, %Y' | jsonify}},
@@ -33,6 +34,7 @@ swcache: true
      {% if page.title != nil and page.searchable %}
      {% assign post = page %}
         "title"    : {{ page.title | jsonify }},
+        "url"      : {{ page.url | relative_url | jsonify }},
         "category" : {{ page.categories | join: ', ' | jsonify }},
         "tags"     : {{ page.tags | join: ', ' | jsonify }},
         "date"     : {{ page.date | date: '%b %d, %Y' | jsonify}},
