@@ -3,7 +3,14 @@
       <!-- home -->
       <div class="nav-item{% if page.layout == 'home' %}{{ " active" }}{% endif %}">
         <a href="{{ '/' | relative_url }}" class="nav-link">
+        {%- if site.home_icon != empty and site.home_icon -%}
+        {%- capture home_icon_url -%}
+          {% include media-url.html src=site.home_icon %}
+        {%- endcapture -%}
+        <img src="{{- home_icon_url -}}" width="112" height="112" alt="Home" onerror="this.style.display='none'">
+        {% else %}
           <span>{{ site.data.locales[include.lang].tabs.home | upcase }}</span>
+        {%- endif -%} 
         </a>
       </div>
 
