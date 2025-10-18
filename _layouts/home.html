@@ -4,9 +4,13 @@ refactor: true
 ---
 
 <div id="blog-post-list" class="flex-grow-1 px-xl-1">
-{% include card.html page_url="/blog/2019-08-08-text-and-typography" height="400px" preview_mode="fill" show_description=true show_date=false show_tags=false show_categories=false show_pin=false %}
-{% include card.html page_url="/blog/" height="150px" preview_mode="fill" show_description=true show_date=false show_tags=false show_categories=false show_pin=false %}
-{% include card.html page_url="/about" height="150px" preview_mode="fill" show_description=true show_date=false show_tags=false show_categories=false show_pin=false %}
+  {% for page_path in site.homepage_cards %}
+    {% if forloop.first %}
+      {% include card.html page_url=page_path height="400px" preview_mode="fill" show_description=true show_date=false show_tags=false show_categories=false show_pin=false %}
+    {% else %}
+      {% include card.html page_url=page_path height="150px" preview_mode="fill" show_description=true show_date=false show_tags=false show_categories=false show_pin=false %}
+    {% endif %}
+  {% endfor %}
 </div>
 
 {% comment %}
