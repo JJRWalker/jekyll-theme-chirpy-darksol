@@ -478,3 +478,60 @@ mjx-container {
 .no-background{
     background: none;
 }
+
+.about-page-socials 
+{
+  $btn-border-width: 3px;
+  $btn-mb: 0.5rem;
+  
+  padding-right: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  @include bp.xxxl {
+    padding-left: 2.75rem;
+    margin-bottom: 1.75rem;
+  }
+  
+  $btn-size: 4.75rem;
+  
+  %button {
+    
+    width: $btn-size;
+    height: $btn-size;
+    
+    border-radius: 50%;
+    color: var(--sidebar-btn-color);
+    background-color: var(--sidebar-btn-bg);
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
+    &:not(:focus-visible) {
+      box-shadow: var(--sidebar-border-color) 0 0 0 1px;
+    }
+    
+    &:hover {
+      background-color: var(--sidebar-link-btn-hover-bg);
+    }
+  }
+
+  .social-link-button {
+    @extend %button;
+    @extend %sidebar-links;
+    @extend %clickable-transition;
+    
+    &:not(:last-child) {
+      margin-right: v.$sb-btn-gap;
+      
+      @include bp.xxxl {
+        margin-right: v.$sb-btn-gap-lg;
+      }
+    }
+    
+  }
+  
+  i {
+      line-height: $btn-size;
+  }
+}

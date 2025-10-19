@@ -36,12 +36,14 @@
   --site-subtitle-color: #868686;
   --sidebar-link-color: rgb(147, 161, 161);
   --sidebar-bg: #1e1e1e;
-  --sidebar-border-color: #292929;
+  --sidebar-border-color: rgb(21, 21, 21, 0.72) 0 6px 18px 0,
+    rgb(137, 135, 135, 0.24) 0 0 0 1px;;
   --sidebar-muted-color: #868686;
   --sidebar-active-color: rgb(181, 137, 0);
   --sidebar-hover-bg: rgb(7, 54, 66);
-  --sidebar-btn-bg: #232328;
-  --sidebar-btn-color: #787878;
+  --sidebar-link-btn-hover-bg: rgb(61, 90, 99);
+  --sidebar-btn-bg: rgb(7, 54, 66);
+  --sidebar-btn-color: rgb(147, 161, 161);
   --avatar-border-color: rgb(206, 206, 206, 0.9);
 
   /* Topbar */
