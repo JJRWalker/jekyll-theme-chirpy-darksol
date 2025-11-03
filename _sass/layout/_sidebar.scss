@@ -43,11 +43,11 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
     width: v.$sidebar-width-large;
   }
 
-  %sidebar-link-hover {
-    &:hover {
-      color: var(--sidebar-active-color);
-    }
+%sidebar-link-hover {
+  &:hover {
+    color: var(--sidebar-active-color);
   }
+}
 
   a {
     @extend %sidebar-links;

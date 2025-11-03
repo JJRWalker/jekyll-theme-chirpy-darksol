@@ -93,7 +93,6 @@
 #topbar-breadcrumb-wrapper {
   height: v.$topbar-breadcrumb-height;
   //background-color: var(--topbar-bg);
-
   @include bp.lt(bp.get(lg)) {
     @include mx.slide(top 0.2s ease);
 
@@ -109,7 +108,6 @@
     color: var(--text-muted-color);
     padding-left: 0.0rem;
     padding-top: 1rem;
-
     a:hover {
       @extend %link-hover;
     }
