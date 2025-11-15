@@ -7,7 +7,7 @@ tags: ["C", "C++", "Software Development", "Getting Started", "Basics"]
 math: true
 mermaid: true
 ---
-## Introduciton
+## Introduction
 Before we can get to the good stuff, I wanted to give a quick overview of how to write a program in C, and by extension C++, which is after all, C with classes. 
 
 
@@ -32,7 +32,7 @@ If I remember correctly, this was probably the first major hurdle hit while stud
 I had been used to interpreted languages like C# and Python. Which do not require compiling. These languages are setup so another application called an interpreter, translates the code into instructions your CPU can perform, as a sort of middleman. If you're in the game development world, examples of this are: C# in Unity, Blueprints in Unreal and GD script in Godot.
 
 
-While you can write code for games and other graphical applications in these languages just fine. You do get a performance increase by using a compiled languge like C or C++ due to it's pre-compiled nature. It doesn't have to do any extra work to make the code go, the information the CPU needs (assembly code) is already right there in the executable.
+While you can write code for games and other graphical applications in these languages just fine. You do get a performance increase by using a compiled language like C or C++ due to it's pre-compiled nature. It doesn't have to do any extra work to make the code go, the information the CPU needs (assembly code) is already right there in the executable.
 
 
 Trying not to get too in-depth on that topic, all we need to know is that we have to perform this additional step to make the code run on the CPU, since it doesn't understand C or C++.
@@ -66,7 +66,7 @@ This is the stage where we actually convert the C code into assembly for the CPU
 
 
 #### Linking
-Linking takes all the intermediate files we generated in the last step and binds them together in an executable you can run. Making sure every function you described actually exists and can be called. This is also where any external code that's pre-packaged in what's referred to as a "libary" is added to your executable. There's a lot more finer details here but for now, a basic understanding of each stage is all you need to get started. This is where you may have "linking errors", usually denoted by "[LINK]" before an error message in your compiler output. This usually means, the building step was able to see that the code you're trying to call was declared somewhere, but not defined. We'll be going into what that means later.
+Linking takes all the intermediate files we generated in the last step and binds them together in an executable you can run. Making sure every function you described actually exists and can be called. This is also where any external code that's pre-packaged in what's referred to as a "library" is added to your executable. There's a lot more finer details here but for now, a basic understanding of each stage is all you need to get started. This is where you may have "linking errors", usually denoted by "[LINK]" before an error message in your compiler output. This usually means, the building step was able to see that the code you're trying to call was declared somewhere, but not defined. We'll be going into what that means later.
 
 
 #### Compiler Arguments
@@ -113,7 +113,7 @@ int main(int argc, char** argv)
 
 
 #### Build script
-Next we're going to create a bash script, we won't go to hard on the bashing, but making a script that runs the compile command is a lot more convinent than having to type it out everytime.
+Next we're going to create a bash script, we won't go to hard on the bashing, but making a script that runs the compile command is a lot more convenient than having to type it out every time.
 
 
 Create a file called build.sh in your project directory. Then open it in your text editor.
@@ -149,12 +149,12 @@ clang src/main.c
 Type the relevant command into your build.sh file, save and run the script by double clicking it or by opening your command line in the project directory, and enter the command `./build.sh`
 
 Congrats! You just compiled your first C application.
-> For MSVC you'll need to run the `build.sh` script from the command line, running the command `vcvarsall [cpu architecture]` before you do so, for example, my system is 64 bit, so my command would be `vcvarsall x64`. This is due to MSVC needing to setup environment variables in order to access the correct `cl` command. These variables are only set for the command line window that `vcvarsall` was ran in, once the window is closed you'll need to run it again to compile. While you could add `vcvarsall x64` to your `build.sh` script, in my expirence, it's usually best to run this once in the command line then call `build.sh` in the same window as this command takes a few seconds to run, which you don't want to have to do every time you build.
+> For MSVC you'll need to run the `build.sh` script from the command line, running the command `vcvarsall [cpu architecture]` before you do so, for example, my system is 64 bit, so my command would be `vcvarsall x64`. This is due to MSVC needing to setup environment variables in order to access the correct `cl` command. These variables are only set for the command line window that `vcvarsall` was ran in, once the window is closed you'll need to run it again to compile. While you could add `vcvarsall x64` to your `build.sh` script, in my experience, it's usually best to run this once in the command line then call `build.sh` in the same window as this command takes a few seconds to run, which you don't want to have to do every time you build.
 {: .prompt-info }
 
 > Depending on how you installed your compiler, you may need to add something to your PATH variable on your operating system. If you're on linux and installed through your package manager, the command should be available to you. But on windows, you may need to add it manually so the command is accessible in any directory. The easiest way to do this is to hit the windows key and type "PATH" into the search box, there should be an option named something along the lines of "PATH" and or "environment variables". Select this option, find the "PATH" variable, click "Edit", add a semi-colon to the end of the existing text, then add the path to where your compiler is installed. My MSVC path is: `c:/Program Files/Microsoft Visual Studio/2022/Community/VC/Auxiliary/Build`. This folder contains `vcvarsall.bat` which sets up command line to be able to run the compile commands.
 {: .prompt-info }
-> Depending on your code editor, you may want to pass an absolute path into the compiler rather than a relative one. For example the windows path `C:/dev/project/src/main.c` rather than `src/main.c` At least in my case, if I use relative paths, and select an error in the console to jump to it. It will create a temporary copy of the file file instead of opening the actual file istelf.
+> Depending on your code editor, you may want to pass an absolute path into the compiler rather than a relative one. For example the windows path `C:/dev/project/src/main.c` rather than `src/main.c` At least in my case, if I use relative paths, and select an error in the console to jump to it. It will create a temporary copy of the file file instead of opening the actual file itself.
 {: .prompt-info }
 
 #### Changing the output directory
@@ -205,7 +205,7 @@ clang ../src/main.c
 ```
 > \# in bash is a comment, anything following this will not be considered when running the bash script.
 {: .prompt-info }
-> You can also specify the output directory along with the output file name by using compiler options, however this only changes the directory that the final executable will be found in. In my expirence, I've found it's usually just easiest to change directory to the build folder and then run the compile command from there.
+> You can also specify the output directory along with the output file name by using compiler options, however this only changes the directory that the final executable will be found in. In my experience, I've found it's usually just easiest to change directory to the build folder and then run the compile command from there.
 {: .prompt-info }
 
 #### Executable Name
@@ -302,25 +302,25 @@ is very different from:
 *"The Panda eats, shots, and leaves"*
 
 
-We as humans may be able to infer when someone has made a logical error and correct it in our heads, but the compiler requires speficity.
+We as humans may be able to infer when someone has made a logical error and correct it in our heads, but the compiler requires specificity.
 
 
 These will begin to make more sense as we go but the basic rules are as follows:
 - A `;` (semi-colon) must appear at the end of a statement, exceptions being: conditional statements like `if`, `for`, `while`, `switch`, etc and function implementations. Anything before a `;` is considered part of the same statement, so statements can span multiple lines.
 - `//` Denotes a comment until the end of the line, the text is not considered for compilation.
 - `/*` Denotes a comment until a matching `*/`  is found, this can span over multiple lines.
-- `()` Denote that whatever is inside them should happen before anything outside of them. The same as in mathmatics. 
+- `()` Denote that whatever is inside them should happen before anything outside of them. The same as in mathematics. 
 
-Other syntatic rules will be explained when they are relevant to what's being discussed.
-
-
-Outside of syntax there is one rule that is fundemental to mathmatics, dividing by `0` is undefined in C, and can cause unexpected behaviour such as a crash. However, multiplying by `0` is valid. 
+Other syntactic rules will be explained when they are relevant to what's being discussed.
 
 
-We cannot divide something by `0` because `0` goes into any number infinite times. Whereas multiplying by `0`; `0` sets of any number is still `0`. We can make a human judgement what to do in the case of dividing by `0`, but a computer has to follow a set of proceedures to the letter, since this behaviour is undefined, it's difficult to determine what the computer will actually do. So it's safest for us, the programmers, to tell it to not divide, but instead, skip, or do something else instead dependant on the situation.
+Outside of syntax there is one rule that is fundamental to mathematics, dividing by `0` is undefined in C, and can cause unexpected behaviour such as a crash. However, multiplying by `0` is valid. 
+
+
+We cannot divide something by `0` because `0` goes into any number infinite times. Whereas multiplying by `0`; `0` sets of any number is still `0`. We can make a human judgement what to do in the case of dividing by `0`, but a computer has to follow a set of procedures to the letter, since this behaviour is undefined, it's difficult to determine what the computer will actually do. So it's safest for us, the programmers, to tell it to not divide, but instead, skip, or do something else instead dependant on the situation.
 
 ## Variables
-Before I explain what a variable is, it might help to know why we use them. Fundementally, a program is a state that output in some way. If we modify the state with inputs the state changes and therefore the output changes.
+Before I explain what a variable is, it might help to know why we use them. Fundamentally, a program is a state that output in some way. If we modify the state with inputs the state changes and therefore the output changes.
 
 
 The way we store the state is by using variables.
@@ -329,7 +329,7 @@ The way we store the state is by using variables.
 A variable is value that is defined by the programmer and given a name to refer back to later. 
 
 
-Essentially you're telling the compiler: "Hey here's this thing I want to talk about, whenever I use this word, I'm specifically refering to this instance of this thing"
+Essentially you're telling the compiler: "Hey here's this thing I want to talk about, whenever I use this word, I'm specifically referring to this instance of this thing"
 
 
 It's a pretty broad definition, so might not be clear at first. To be more specific, it's a way for us to map a point and size in memory to a name, so we can describe what we want to do with it more easily. 
@@ -344,7 +344,7 @@ In order to tell our computer which memory to grab, we use variables as a human 
 
 > We won't go into it too much here but there's also another step in-between your CPU and Physical Memory. Your OS will have what's called Virtual Memory which is used to manage physical allocations.
 {: .prompt-info }
-> There are quite a few terms that are used interchangably when talking about variables, sometimes people will use different terminology based on the context. For example, "argument" usually refers to a variable that is being passed into another process, method or function. However, sometimes people will also call these "parameters". These are all the same concept.
+> There are quite a few terms that are used interchangeably when talking about variables, sometimes people will use different terminology based on the context. For example, "argument" usually refers to a variable that is being passed into another process, method or function. However, sometimes people will also call these "parameters". These are all the same concept.
 {: .prompt-info }
 
 ### Variables in C
@@ -388,7 +388,7 @@ To properly describe types in C, it will be useful to have a basic understanding
 In a conventional computer, data is stored as either 0 or 1, this is called a "bit". 
 
 
-Since we want to represent numbers that are bigger than 1, computers have a way of expressing larger numbers by using multiple bits. A block of 8 bits is called a "byte". All memory in C is accessed in bytes, meaning the minumum number of bits a variable can have is 8.
+Since we want to represent numbers that are bigger than 1, computers have a way of expressing larger numbers by using multiple bits. A block of 8 bits is called a "byte". All memory in C is accessed in bytes, meaning the minimum number of bits a variable can have is 8.
 
 
 The computer can then assign a whole number value to each of the bits in a byte. A combination of these bits can represent values in-between these whole number values. 
@@ -423,7 +423,7 @@ The computer can then string multiple bytes together to express larger numbers, 
 
 ```
 
-> Values that require more than 1 byte can be read in different ways. This is refered to as Endianess. Big-Endian means the bytes that represent larger values are stored first. Little-Endian means the bytes that represent smaller values are stored first. E.g. a 2 byte (16 bit) value with the bytes 00000001 00000000 would be 256 in Big-Endian, and 1 in Little-Endian. Commonly Big-Endian is used, but some use cases may mean Little-Endian is optimal.
+> Values that require more than 1 byte can be read in different ways. This is referred to as Endianess. Big-Endian means the bytes that represent larger values are stored first. Little-Endian means the bytes that represent smaller values are stored first. E.g. a 2 byte (16 bit) value with the bytes 00000001 00000000 would be 256 in Big-Endian, and 1 in Little-Endian. Commonly Big-Endian is used, but some use cases may mean Little-Endian is optimal.
 {: .prompt-info }
 
 #### Variable Types
@@ -463,14 +463,14 @@ The `signed` and `unsigned` keywords do not change the size of the type, which i
 There are other keywords that tell the compiler what to expect when using this variable. These are:
 
 - `const`: Tells the compiler that this value will never change after being set, this can be helpful for optimisation and let's other programmers better understand the intent of the variables use.
-- `static`: Tells the compiler that this variable is the same memory in every instance it's used. This means it's value is persistant even if it would ordinarily be removed from memory. Often this is used for global variables or functions (variables or functions that can be accessed from anywhere).
-- `volitile`: Tells the compiler that this variable is likely to change, this might not be obviously useful at first, but when it comes to multi-threading it's neccessary to tell the CPU to re-fetch the variable's value, even if it wouldn't need to do it under regular circumstances.
+- `static`: Tells the compiler that this variable is the same memory in every instance it's used. This means it's value is persistent even if it would ordinarily be removed from memory. Often this is used for global variables or functions (variables or functions that can be accessed from anywhere).
+- `volatile`: Tells the compiler that this variable is likely to change, this might not be obviously useful at first, but when it comes to multi-threading it's necessary to tell the CPU to re-fetch the variable's value, even if it wouldn't need to do it under regular circumstances.
 
 
 In addition to these types there is a special non-type called `void` void stores no information and is a way to tell the compiler that nothing is expected. This will become more relevant later on.
 
 
-> When asigning values to variables, there are suffixes that tell the compiler what kind it is. The number `10` for example. `10` by itself implies it's an integer, `10.0` implies it's a double, and `10.0f` implies it's a float. There are more, but these are the most common. 
+> When assigning values to variables, there are suffixes that tell the compiler what kind it is. The number `10` for example. `10` by itself implies it's an integer, `10.0` implies it's a double, and `10.0f` implies it's a float. There are more, but these are the most common. 
 {: .prompt-info }
 
 > You can use the word `long` before a type to double it's bit count. E.g `long long long` results in a 128 bit integer, and `long double` results in a 128 bit floating point.
@@ -478,7 +478,7 @@ In addition to these types there is a special non-type called `void` void stores
 
 
 #### Operators
-Operators are the name we use for mathmatical symbols, or characters that function like mathmatical symbols, in programming. For example `-`, `+`, `/`, `*`, and `=` are all used as operators in C.
+Operators are the name we use for mathematical symbols, or characters that function like mathematical symbols, in programming. For example `-`, `+`, `/`, `*`, and `=` are all used as operators in C.
 
 - `+` is used for addition.
 - `-` is used for subtraction, or to make the number to the right of it negative.
@@ -502,7 +502,7 @@ E.g. `Value++` is the same as: `Value = Value + 1`
 `Value--` is the same as: `Value = Value - 1`
 
 
-All of these you may have used before when typing into a calulator, but C also has some that you might not have seen.
+All of these you may have used before when typing into a calculator, but C also has some that you might not have seen.
 
 ##### Comparisons
 - `==` Equal, used for comparing values, results in `true` if values to the left and right are equal, otherwise results in `false`. E.g. `2 == 2` results in `true`, `1 == 2` results in `false`
@@ -556,7 +556,7 @@ All of these you may have used before when typing into a calulator, but C also h
 - `<<` Used for left shifting the bits of a value, this is when all the bits are moved a number of places to the left. E.g. `0010 << 1` results in `0100`, `0010 << 2` results in `1000`. This also has the property of doubling an unsigned integer.
 
 
-- `>>` Used for right shifting the bits of a value, this is when all the bits are moved a number of places to the right. E.g. `0100 >> 1` results in `0010`, `0100 >> 2` results in `0001`. This also has the property of halfing an unsigned integer.
+- `>>` Used for right shifting the bits of a value, this is when all the bits are moved a number of places to the right. E.g. `0100 >> 1` results in `0010`, `0100 >> 2` results in `0001`. This also has the property of halving an unsigned integer.
 
 
 - `[]` Used with pointers as a shorthand for getting the variable that's at: `Ptr + (sizeof(ptr_type) * X)` number of bytes ahead of the ptr specified, where `X` is an integer value. Used like `type Value = Ptr[2];`
@@ -568,7 +568,7 @@ It can be useful to define shorthand for these types so we don't have to keep ty
 We can do this by using the `typedef` keyword.
 
 
-`typedef` allows you to assign an alias to another type, telling the compiler that when you use that name, you're refering a variable that is the same size and layout of this type.
+`typedef` allows you to assign an alias to another type, telling the compiler that when you use that name, you're referring a variable that is the same size and layout of this type.
 
 
 The syntax for this is: `typedef type new_type;`
@@ -626,7 +626,7 @@ typedef enum entity_type
 > The `typedef` is not required in C++, you define an enum by just using the word `enum` and then the contents, like this: `enum entity_type { ... };`
 {: .prompt-info }
 
-You can then use the `enum` type `entity_type` as a vairable for storing data and passing into functions.
+You can then use the `enum` type `entity_type` as a variable for storing data and passing into functions.
 
 Like so: `entity_type Type = entity_type_enemy;`
 
@@ -702,16 +702,16 @@ typedef struct vec3
 > The `typedef` is not required in C++, you define a struct by just using the word `struct` and then the contents, like this: `struct vec3 { ... };`
 {: .prompt-info }
 
-A `vec3`, or 3D Vector, is a mathmatical concept used to store both direction and distance (magnitude). I won't go into it too much here, but they are fairly common in game development (and other 3D applications) due to their ability to represent locations.
+A `vec3`, or 3D Vector, is a mathematical concept used to store both direction and distance (magnitude). I won't go into it too much here, but they are fairly common in game development (and other 3D applications) due to their ability to represent locations.
 
 
 They are made up of 3 floating point values describing translation in the X, Y and Z axes.
 
 
-Since vectors are used frequently, and you'll want to perform operations on them to calculate a new state for the game. It makes sense to group it like this for convience.
+Since vectors are used frequently, and you'll want to perform operations on them to calculate a new state for the game. It makes sense to group it like this for convenience.
 
 
-You can assign a `struct` like you would any other variable: `vec3 Postion;`
+You can assign a `struct` like you would any other variable: `vec3 Position;`
 
 
 However when it comes to setting the initial value, how do we know which value to set? There are 3 values, so how do we tell the compiler which one we want to define?
@@ -736,18 +736,18 @@ Position.Z = 1.0f;
 ```
 
 
-One feature unique to C that C++ doesn't have, is the ability to assign variables in a struct through an initialiser list without using the order they apprear in the struct definition.
+One feature unique to C that C++ doesn't have, is the ability to assign variables in a struct through an initialiser list without using the order they appear in the struct definition.
 
 `vec3 Position = { .X = 10.0f, .Y = 0.0f, Z = 1.0f };`
 
-Here we explicitly set each of the values, so if we change the order of the data in the struct, we won't create any unforseen bugs.
+Here we explicitly set each of the values, so if we change the order of the data in the struct, we won't create any unforeseen bugs.
 
 
 You can also assign `struct` values the values of another `struct` if they are of the same type. For example, if I wanted to copy the value of `Position` into a new variable, so I can modify it without changing the original. I could do this:
 
 
 ```
-// not quite a real use case, simplified for explaination
+// not quite a real use case, simplified for explanation
 float Speed = 10.0f;
 vec3 Position = { 10.0f, 0.0f, 1.0f };
 vec3 PredictedPosition = Position;
@@ -767,7 +767,7 @@ Ok so I lied a little in the last section, I don't use `struct vec3` in my code.
 I can explain, I promise.
 
 
-The mathmatical concept of a Vector allows you to scale the number of axes to any value you'd like. Most commonly I find myself using Vector 2D, Vector 3D and Vector 4D. Depending on the problem I'm trying to solve. As a result I would end up with structs: `vec2`, `vec3` and `vec4`, and if I just wanted to get the X and Y components from a `vec3` and use them as a `vec2`, I'd have to create a new `vec2` and assign it like this:
+The mathematical concept of a Vector allows you to scale the number of axes to any value you'd like. Most commonly I find myself using Vector 2D, Vector 3D and Vector 4D. Depending on the problem I'm trying to solve. As a result I would end up with structs: `vec2`, `vec3` and `vec4`, and if I just wanted to get the X and Y components from a `vec3` and use them as a `vec2`, I'd have to create a new `vec2` and assign it like this:
 ```
 vec3 Position = { 10.0f, 0.0f, 1.0f };
 vec2 Position2D = { Position.X, Position.Y };
@@ -825,23 +825,18 @@ Using the `union` `vec3` we can access the values `X`, `Y`, and `Z` as we could 
 
 Since in a `union` the memory is the same for each entry, and since each entry is a `struct` containing 3 floats. Anything we do to `XY` will change the value of both `X` and `Y`.
 
-
-#### Strings
-> TODO
-{: .prompt-danger }
-
 ## Functions
 ### What is a function?
 Functions are a type of variable that is used creating groups of code so that you can run it multiple times.
 
 
-Taking the `vec3` example from before. If we want to add two vectors together, the mathmatical proceedure is to take each of the components from the two vectors and add them together like you would any regular number. 
+Taking the `vec3` example from before. If we want to add two vectors together, the mathematical procedure is to take each of the components from the two vectors and add them together like you would any regular number. 
 
 
 In the case of `vec3` we have 3 values, `X`, `Y` and `Z`, so the code to do that would look like this:
 
 ```
-// assuming these are definied somewhere
+// assuming these are defined somewhere
 // vec3 PositionA;
 // vec3 PositionB;
 
@@ -891,10 +886,10 @@ Then it's use:
 - Then after the `=` operator, the function you are calling. Here we're storing the output of `vec3_add_vec3` in the new `vec3` variable; `Result`.
 - Then within `()`, the variables you want to give to the function. Here we're passing in `PositionA` and `PositionB`, to be used as `VecA` and `VecB` inside the function respectively.
 
-> You need not actually store the result of the function for you to be able to call it, sometimes the result is an integer value that describes what state the function exited in. For example the entry point function: `int main(int argc, char** argv)` returns an exit code, if this value is not `0` it means something happend causing the application to not finish successfully. If you didn't care about the status the function exited in, you could just ignore it by calling `main(argc, argv);` rather than `int Result = main(argc, argv);`
+> You need not actually store the result of the function for you to be able to call it, sometimes the result is an integer value that describes what state the function exited in. For example the entry point function: `int main(int argc, char** argv)` returns an exit code, if this value is not `0` it means something happened causing the application to not finish successfully. If you didn't care about the status the function exited in, you could just ignore it by calling `main(argc, argv);` rather than `int Result = main(argc, argv);`
 {: .prompt-info }
 
-Functions (outside of structs and classes) are entirely self contained and have no information from where they were called from. The only contex the above function knows are the two variables that were passed into it, as well as other globally defined variables and functions. While this might seem like a hassle, it can be a blessing in disguise. If your function only knows about the stuff passed into it, you're encouraged to write code that is completely decoupled from external context. Making it much easier to reuse it in different situations where you may not have that context. The best kind of function, in my expirence, is one that can be called from anywhere at any time without issues.
+Functions (outside of structs and classes) are entirely self contained and have no information from where they were called from. The only context the above function knows are the two variables that were passed into it, as well as other globally defined variables and functions. While this might seem like a hassle, it can be a blessing in disguise. If your function only knows about the stuff passed into it, you're encouraged to write code that is completely decoupled from external context. Making it much easier to reuse it in different situations where you may not have that context. The best kind of function, in my experience, is one that can be called from anywhere at any time without issues.
 
 
 You can also "forward declare" a function, forward declaration is a process in which we tell the compiler: 
@@ -902,10 +897,10 @@ You can also "forward declare" a function, forward declaration is a process in w
 *"ok so there will be something called this coming up later, work under the assumption that it will exist when you get to the linking stage"*
 
 
-This works with types and functions where we don't actually need to know the layout or implementation just yet. This will come up more in the next section, but focusing on functions, we can tell the compiler that this function exists ahead of it's implementation. This can be useful when you want to call the function from another file without needing to share the implementation and it's dependancies. The value of doing this will hopefully become clearer when we get to later sections.
+This works with types and functions where we don't actually need to know the layout or implementation just yet. This will come up more in the next section, but focusing on functions, we can tell the compiler that this function exists ahead of it's implementation. This can be useful when you want to call the function from another file without needing to share the implementation and it's dependencies. The value of doing this will hopefully become clearer when we get to later sections.
 
 
-You can foraward declare a function by doing the following:
+You can forward declare a function by doing the following:
 
 `vec3 vec3_add_vec3(vec3 VecA, vec3 VecB);`
 
@@ -913,7 +908,7 @@ You can foraward declare a function by doing the following:
 As long as you actually implement the function fully somewhere else.
 
 
-The most common practice is to declare functions you want other files to be able to call inside a "header" file (a type of C file that has the extension .h rather than .c or .cpp). Then define the implementation of the function within a .c or .cpp file of the corrosponding name. However there are no hard and fast rules within C that enforce this, so if a situation arises where it's adventageous to do it differently, there's nothing stopping you. You can even do it within the same file if you want to like this:
+The most common practice is to declare functions you want other files to be able to call inside a "header" file (a type of C file that has the extension .h rather than .c or .cpp). Then define the implementation of the function within a .c or .cpp file of the corresponding name. However there are no hard and fast rules within C that enforce this, so if a situation arises where it's advantageous to do it differently, there's nothing stopping you. You can even do it within the same file if you want to like this:
 ```
 vec3 vec3_add_vec3(vec3 VecA, vec3 VecB);
 
@@ -947,7 +942,7 @@ If we want to write a function that doesn't return anything, the `void` type is 
 
 Operators like `+`, `-`, `/`, and `*` can be considered a type of built in function. `long Result = Integer + OtherInteger;` can be thought of as calling a function defined as: 
 ```
-// sorry, this might not be as beginer friendly as I thought
+// sorry, this might not be as beginner friendly as I thought
 // but it's too late to turn back now
 // because it is a good example.
 // I've never actually implemented this now I think about it,
@@ -1008,7 +1003,7 @@ vec3 operator +(vec3 LeftVec, vec3 RightVec)
 Now, whenever we type `vec3 Result = VecA + VecB;`, this function will be called.
 
 
-> Operators that modify the value left of the `=`; like `+=` must be defined within the `struct` or `class` you're using the `+=` operator on, the function defined like this: `vec3& operator +=(vec3 RightVec)`. This uses something we haven't covered called a "reference" denoted by the `&` symbol after the type name. References are a lot like pointers, only they cannot be null or `0`. This means you have to assign them to point to a value when they are initialised. I prefer to use pointers instead because they are more versitile. However, if you're using C++, they are required for this operator.
+> Operators that modify the value left of the `=`; like `+=` must be defined within the `struct` or `class` you're using the `+=` operator on, the function defined like this: `vec3& operator +=(vec3 RightVec)`. This uses something we haven't covered called a "reference" denoted by the `&` symbol after the type name. References are a lot like pointers, only they cannot be null or `0`. This means you have to assign them to point to a value when they are initialised. I prefer to use pointers instead because they are more versatile. However, if you're using C++, they are required for this operator.
 {: .prompt-info }
 
 
@@ -1150,13 +1145,13 @@ int main(int argc, char** argv)
 }
 ```
 
-Function pointers can be useful for a number of things, in this example, we're using them to map a platform specific implementation to a variable we can access in our main body of code. This makes it much easier to port applications to other platforms later on. For example, we can create a struct called `platform` which stores all neccessary platform function pointers and application data. Then use the data on that struct throughout our program. Now any changes we make to the `platform` struct, and the functions it points to will just work when we assign new implmentations for a different platform. 
+Function pointers can be useful for a number of things, in this example, we're using them to map a platform specific implementation to a variable we can access in our main body of code. This makes it much easier to port applications to other platforms later on. For example, we can create a struct called `platform` which stores all necessary platform function pointers and application data. Then use the data on that struct throughout our program. Now any changes we make to the `platform` struct, and the functions it points to will just work when we assign new implementations for a different platform. 
 
 ### Considerations when using pointers
 One of the things I like about pointers in C is they don't restrict you. As long as the types match, the code will compile and run. It will even allow you to interpret a variable as if it's another type entirely.
 
 
-This does open the door to runtime errors if you don't have a gameplan, if the pointer is not assigned (`0`), or if it points to memory the application shouldn't have access to. Then you try and dereference it, the program will crash. Due to memory security, if you were able to set a pointer to a space in memory that is in use by your OS, then use it to modify that memory. You could cause unexpected behaviour across your system, and not just contained to your application. Malicious programmers could also exploit this to modify your OS to allow remote access. As a result your OS just won't allow you to read or write memory that it takes ownership of.
+This does open the door to runtime errors if you don't have a game plan, if the pointer is not assigned (`0`), or if it points to memory the application shouldn't have access to. Then you try and dereference it, the program will crash. Due to memory security, if you were able to set a pointer to a space in memory that is in use by your OS, then use it to modify that memory. You could cause unexpected behaviour across your system, and not just contained to your application. Malicious programmers could also exploit this to modify your OS to allow remote access. As a result your OS just won't allow you to read or write memory that it takes ownership of.
 
 
 C and C++ however, are generally considered "memory unsafe" which means that there is no checking if you're trying to access a memory address outside the bounds of the memory allocation you asked for. This is somewhat a double edged sword, with less rules, you're able to do more with pointers, however it can lead to bugs. For example, if you create a pointer and assign it the memory address of a value. If that value stops existing for whatever reason, and you try to modify the data through the pointer. You'll now modify whatever took it's place in memory. Causing undefined behaviour in your application, potentially leading to a crash. These issues are pretty hard to track down since the errors they produce will often be entirely unrelated to the actually issue that caused them.
@@ -1165,6 +1160,8 @@ C and C++ however, are generally considered "memory unsafe" which means that the
 These pain points can be eased by how you manage memory, but that's a topic for another post.
 
 ## Arrays
+
+### What is an Array?
 An array is the name we use to refer to a buffer, group or list of variables.
 
 
@@ -1174,19 +1171,31 @@ There are cases where it makes sense to store your variables in an array so you 
 I won't get too into it, since the concept of an array overlaps with memory management, which I wanted to cover in it's own blog post. But the simplest version of an array can be done without going into that topic by using an area of memory called the "stack". Just know there will be more in the future... you are not safe from arrays...
 
 
+### Creating an Array on the Stack
 Creating an array uses similar syntax to creating a variable, only you have to specify how many variables you'd like in the array. Like this:
 
 `float FloatArray[10] = {0};`
 
 
-This gets enough memory for `10` floats from the stack, and then assigns `FloatArray` to the point in memory where that block starts. Because of this, the value `FloatArray` is actually a `float` pointer, not a float itself. 
+This gets enough memory for `10` floats from the stack, and then assigns `FloatArray` to the point in memory where that block starts. Because of this, the value `FloatArray` is actually a `float` pointer, not a float itself.
+
+The variables inside an array are often referred to as "elements" or "items". This is just the word used to describe `1` thing inside the array.
 
 
+### Accessing Array elements
 To access each variable in the array, you'll need to use the `[]` operator like we did when we created the array.
 
 For example, if I wanted to get the first element, I'd write this:
 
 `float Value = FloatArray[0];`
+
+
+You can also set elements in the same way:
+
+`FloatArray[0] = 10.0f;`
+
+
+The number inside `[]` is often referred to as the "index".
 
 
 Much like everything else in C, `0` is the first element not `1`. This due to how the `[]` operator works. 
@@ -1196,6 +1205,66 @@ Arrays use a concept called a Stride, this Stride is equal to the size of one el
 
 
 The stride is used to determine how many bytes we have to jump forward to get to the next element. The `[]` operator when passed the value `X`. Calculates: `*(BaseByteAddress + (Stride * X))` Getting us the de-referenced value of the `X`th element in the array.
+
+> If you try to access an index that is out of bounds; a number larger than (ArrayLength - 1), your program will throw an error. Since the compiler knows exactly how long the array is, it is able to catch when you're doing something potentially unsafe and throw an error. This is not the case if we treat the array as a pointer, e.g. `float*` as it doesn't really know it's an array anymore.
+{: .prompt-warning }
+
+### Getting the length of an Array
+You can get the length (sometimes referred to as count) of an array created on the stack by using the `sizeof` keyword. `sizeof` works like a function, and allows you to pass in a type or variable, returning it's size in bytes.
+
+In the case of:
+
+`long Integer = 0;`
+
+Either:
+
+`sizeof(long);`
+
+or
+
+`sizeof(Integer);`
+
+Will return the same number of bytes. 
+
+>It can be beneficial to use the variable name instead of the type where you can, this allows us to change the type of the variable without having to make any changes. Whereas if we just used the type name, and we forgot to change the type passed into a `sizeof`, we will not get the correct array length. Resulting in unexpected behaviour that can be hard to track down. If we change the variable name, the compiler will throw an error where we forgot to use the new name. Meaning we are relatively safe from this bug as long as the program compiles.
+{: .prompt-tip }
+
+
+We can use this to find the total size of the array on the stack, then divide the total size by the size of one element in the array. Like this:
+
+```
+{
+    char Filepath[256] = {0};
+    long FilepathLength = sizeof(Filepath) / sizeof(Filepath[0]);
+}
+```
+> We can assume all arrays on the stack have a length of at least `1`, since the C specification does not allow for stack arrays to have a size of 0. So it's safe here to use `[]` to access the first element and get it's size.
+{: .prompt-info }
+> Note: this will give us the maximum number of elements that *can* be inside the array, not how many we put inside it. You'll need to keep track of that yourself if needed. More on this later down the line!
+{: .prompt-info }
+
+
+### Passing an Array into a function
+Since Arrays are just a pointer to the start of a block of memory, you can pass an array into a function as a pointer. It's important to also pass in the length of the array along with it, since once it's a pointer, we won't be able to determine the size of the full Array. Using `sizeof` on a pointer, will just give you the size of the pointer, which on a 64 bit system, will always be 8 bytes. 
+
+In the case of the Array `char Filepath[256] = {0};`
+
+The function declaration would like this:
+
+```
+
+// function that does something to the array
+void do_something_with_array(char* Array, long ArrayLength);
+
+int main(int argc, char** argv)
+{
+    char Filepath[256] = {0};
+    long FilepathLength = sizeof(Filepath) / sizeof(Filepath[0]);
+
+    do_something_to_with_array(Filepath, FilepathLength);
+}
+
+```
 
 
 More on iterating over arrays later, but that's the basic concept!
@@ -1224,13 +1293,13 @@ void some_func(char* Ptr)
 This is an early `return`, similar to the example I've used before. In this case `if` the pointer we pass in is null (`0`), then we `return` out of the function early without running any code that comes after it. Ensuring we do not generate a crash here. 
 
 #### else and else if
-There are two other varients of `if`: `else if` and `else`. These can only be used after an initial `if` statement. An `else if` statement is only entered if the initial `if` condition was not met and the statement inside the `else if` is met. For `else` the code inside the block is always ran if the previous `if` condition was not met.
+There are two other variants of `if`: `else if` and `else`. These can only be used after an initial `if` statement. An `else if` statement is only entered if the initial `if` condition was not met and the statement inside the `else if` is met. For `else` the code inside the block is always ran if the previous `if` condition was not met.
 
 
 `if` a statement is true, and has following `else if` checks, we do not perform any of the operations inside the following statements. Instead, we just skip over all code until the end of the last `else` or `else if`
 
 
-An example of this from code I've written in the past is comparing file extentions when loading assets for a game.
+An example of this from code I've written in the past is comparing file extensions when loading assets for a game.
 
 ```
 // iterates through the `Src` string and copies into the `Dst`
@@ -1367,7 +1436,7 @@ Which will not result in the same outcome. In this case, we will only ever run t
 One issue with `if` statements is that we have to evaluate each of them in order until we reach one that is valid. This means, in a worst case scenario, where the valid condition is the last one. We have to do all the work contained within the `if` statements before it.
 
 
-While sometimes this is neccessary, if we're just comparing two integer values like this: 
+While sometimes this is necessary, if we're just comparing two integer values like this: 
 
 ```
 if (Integer == 0)
@@ -1424,7 +1493,7 @@ Because of this, you can have two or more cases share the same codepath.
 
 For example, if we wanted the cases for `0` and `1` to run the same code. 
 
-Equivilant to: `if (Integer == 0 || Integer == 1)`
+Equivalent to: `if (Integer == 0 || Integer == 1)`
 
 We can do the following:
 
@@ -1546,10 +1615,146 @@ switch (*Byte)
 }
 ```
 
-This is especially useful when parsing text files to extract data stored in JSON, YAML or whatever human readable type your project uses.
+This is especially useful when parsing text files to extract data stored in JSON, YAML or whatever human readable type your project uses. As it allows us to create a case for skipping over whitespace like tabs, spaces and newlines. Then only actually parse anything that is noteworthy like variable names, arrays, objects, values.
 
 ### for
-#### continue
+
+I may have mentioned a few times along the way that there are situations where we want to do the same thing for sets of multiple data. For example, if we have an array of `vec3` we want to go through and find the closest point to a location specified. To do this, we can use a `for` loop.
+
+A `for` loop allows you to run the same code with a condition for how many times it should do it.
+
+Within this condition you can specify: an initial value, a requirement for the loop to continue, and an operation to do each time the current iteration completes.
+
+You do this by using syntax that is specific to for loops: 
+
+`for (initial variable; condition; on iteration)`
+
+The most common example of this, iterating over an array, looks something like this:
+
+
+```
+{
+    for (long Index = 0; Index < ArrayCount; ++Index>)    
+    {
+        // do stuff
+    }
+}
+```
+
+In the `vec3` example I gave, it would end up looking something like this:
+```
+
+// function that gets the distance between VecA and VecB
+float vec3_distance(vec3 VecA, vec3 VecB);
+
+// this probably isn't the fastest way to do this but for simplicity:
+vec3 get_closest_point(vec3* Points, long PointsCount, vec3 TestPoint)
+{
+    // FLT_MAX is a constant float defined as the maximum
+    // positive value a float can express.
+    float ShortestDistance = FLT_MAX;
+    vec3 Result = {0};
+    for (long PointIndex = 0; PointIndex < PointsCount; ++PointIndex)
+    {
+        vec3* Point = &Points[PointIndex];
+        float Distance = vec3_distance(*Point, TestPoint);
+        if (Distance < ShortestDistance)
+        {
+            ShortestDistance = Distance;
+            Result = *Point;
+        }
+    }
+
+    return Result;
+}
+```
+
+This is probably the most common case of `for` loop use. We initialise some integer value to `0`, check the value is less than the array count, then increment the value after we finish one iteration.
+
+
+But `for` loops can do much more than this. Since it's more loosely defined as `for (init; condition; iteration)`, we don't have to follow the above pattern. We can use it for all sorts of things.
+
+
+For example, if we have a buffer of memory, and we know the start and end pointers, we can use those instead.
+
+`for (float* Current = FloatBlockStart; Current != FloatBlockEnd; ++Current)`
+
+> using `++` operators on pointers results in the pointer jumping forward 1 `sizeof(type)` ahead in memory. Resulting in the pointer now pointing to the element that comes next in the buffer / block / array.
+{: .prompt-info }
+
+You can also omit parts a `for` loop, if you want. Say you don't want the condition part, you can skip it like this:
+
+`for (float* Current = FloatBlockStart;;++Current)`
+
+The only requirement is that there at least two semi-colons `;` in there.
+
+
+Meaning if you want an infinite `for` loop, you can do this:
+
+`for (;;)`
+
+
+But won't an infinite loop cause the program to get stuck?
+
+This brings me nicely to the next topic: Flow control.
+
+#### for loop flow control: break and continue
+Sometimes you want to dynamically alter the flow of your for loop, e.g. if an element is invalid, skip over it, or stop looping inside the loop itself. To do this we can use the `break` keyword, mentioned in the section about `switch` statements, and the `continue` keyword.
+
+Break here works pretty similarly to in a `switch` statement. It tells the computer to jump out of this conditional. This can be used if we want to end the loop early.
+
+Going with the example of an infinite `for` loop I mentioned. This can be used to `break` out of it if a condition is met. Like this:
+
+```
+// Takes an array of pointers as an argument
+// no length provided, program is structured in a way that there is
+// 1 nullptr at the end of the array
+void do_something_to_array(float** Array)
+{
+    float** CurrentFloatPtr = Array;
+    for (;;)
+    {
+        if (!*CurrentFloat)
+        {
+            break;
+        }
+
+        ++CurrentFloat;
+    }
+}
+```
+This is an example of what I think of as an indirect array. The array doesn't contain any *real* data, it just contains pointers to where that data is. This can be useful in a number of situations, but that's a post for another time. It might be a bit tricky to follow at first, since it's an array of pointers, making the pointer to the first element a pointer to a pointer, but hopefully it makes sense in time.
+
+
+Here we iterate over the pointers in the array, if we hit a null pointer (`0`), then we break the loop, meaning the program does not get stuck in here unless there is a bug somewhere else in the code.
+
+
+While it's usually best to use a condition you know you'll meet, defining it inside the `for` statement itself, there are some situations where this becomes tricky or it's just easier to not. It's really down to a case by case basis about what makes your life easier as a programmer, and what makes life easier for the CPU.
+
+`continue` on the other hand, does not `break` out of the loop entirely, but instead just skips over the code below it within the loop. For example if you have an array of pointers that are stored in a way where there are gaps with null pointers between valid data. You could do the following:
+
+```
+{
+    for (float** CurrentFloat = FloatBlockStart; 
+        CurrentFloat != FloatBlockEnd; ++CurrentFloat)
+    {
+        if (!(*CurrentFloat))
+        {
+            continue;
+        }
+
+        // do stuff to the float
+    }
+}
+```
+
+Here we iterate over every possible value in the pointer array, but if we come across one that isn't set, we skip it.
+
+
+We could also use this kind of behaviour if the data is invalid in some other way. Maybe there's a mathematical shortcut that allows us to determine that this value cannot possibly be valid, even though it's a valid pointer.
+
+
+The point I'm trying to get at here rather poorly and ambiguously is how you use `for` loops depends heavily on the situation. So consider using them in ways that deviate from the standard `for (int; int < max; ++int)` if it fits the situation. Of course there are going to be a lot of cases where the common path is the best one, but just something to keep in mind.
 
 ### while
 
@@ -1580,10 +1785,10 @@ Both `float` and `long` are 32-bit values. What happens when we're casting to ty
 In cases where we cast from a lower number of bits to a higher one. E.g. a 32-bit integer to a 64-bit integer. We can safely store all the data from the 32-bit integer inside the 64-bit one. So the numbers will always match.
 
 
-However, when we cast from a 64-bit integer to a 32-bit one, we may expirence "truncation". This is where we have to chop off the higher byte values of the 64-bit integer so it will fit inside a 32-bit value. If there was any data above the 32-bit mark, the new value will be the maximum value of a 32-bit integer.
+However, when we cast from a 64-bit integer to a 32-bit one, we may experience "truncation". This is where we have to chop off the higher byte values of the 64-bit integer so it will fit inside a 32-bit value. If there was any data above the 32-bit mark, the new value will be the maximum value of a 32-bit integer.
 
 
-In the case of casting from `double` down to `float` we end up losing precision, a `double` can represent twice the number of decimal places a `float` can. Which means if we cast down, we cannot store all these decimal places inside the `float`. Leading to some rounding. While this isn't usually an issue, there are some mathmatical equations where incredibly small numbers make a big difference.
+In the case of casting from `double` down to `float` we end up losing precision, a `double` can represent twice the number of decimal places a `float` can. Which means if we cast down, we cannot store all these decimal places inside the `float`. Leading to some rounding. While this isn't usually an issue, there are some mathematical equations where incredibly small numbers make a big difference.
 
 
 > Your compiler may or may not allow you to actually cast values to a value of a smaller number of bits. It will usually output a warning, but sometimes warnings may be treated as errors depending on your build setup.
@@ -1610,7 +1815,7 @@ For example:
 This basically skips the cast step that just using `(long)FloatValue` would do.
 
 
-If you wanted to modify this `long` value without modifying the inital `float` value, you would need to copy the bytes of the `long` into a new long. To copy by byte, the easiest way is usually to use interpret casting again.
+If you wanted to modify this `long` value without modifying the initial `float` value, you would need to copy the bytes of the `long` into a new long. To copy by byte, the easiest way is usually to use interpret casting again.
 
 ```
 // assumes both Destination and Source are a size in bytes
@@ -1640,3 +1845,10 @@ By casting the address of both variables to a `char*` we can read them one byte 
 
 
 ## Entry Point
+
+
+
+## Strings
+Strings are a what we call text, a series, or *string* of individual characters that make up words. Though they need not be actual words, it's really just a broad category for data that contains multiple characters.
+
+These are somewhat a special case in C, as they aren't really a traditional type. They are more of a buffer, meaning they are a series of bytes which, most of the time, have an arbitrary length. They are often non deterministic, meaning we don't know exactly how long it's going to be until it exists.
