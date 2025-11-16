@@ -179,10 +179,9 @@ collections:
     output: true
     sort_by: order
 
-
 defaults:
   - scope:
-      path: "" # An empty string here means all files in the project
+      path: _posts # An empty string here means all files in the project
       type: posts
     values:
       layout: post
@@ -224,6 +223,7 @@ exclude:
   - purgecss.js
   - "*.config.js"
   - "package*.json"
+  - "_posts/.obsidian"
 
 jekyll-archives:
   enabled: [categories, tags]

@@ -1,11 +1,20 @@
 ---
 title: "Getting Started: C/C++"
-description: "Introduction to C and C++"
+description: Introduction to C and C++
 author: june
-categories: [Programming, Getting Started]
-tags: ["C", "C++", "Software Development", "Getting Started", "Basics"]
+categories:
+  - Programming
+  - Getting Started
+tags:
+  - C
+  - Cpp
+  - Software Development
+  - Getting Started
+  - Basics
 math: true
 mermaid: true
+pin: false
+hidden: false
 ---
 ## Introduction
 Before we can get to the good stuff, I wanted to give a quick overview of how to write a program in C, and by extension C++, which is after all, C with classes. 
